@@ -4,6 +4,9 @@ import requests
 
 from telegram import Update
 from telegram.ext import CommandHandler, Updater, Application, ContextTypes
+from dotenv import load_dotenv
+
+load_dotenv()
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'telega_auth_project.settings')
 django.setup()
@@ -26,6 +29,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Токен не найден.")
 
 def main():
-    application = Application.builder().token("7850783193:AAGXyY9fmFVVxgIKjLa4WxXhyi9VGe1ULcQ").build()
+    application = Application.builder().token(os.getenv('TOKEN')).build()
     application.add_handler(CommandHandler("start", start))
     application.run_polling()
