@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    {% if username %}
+    <h1>Добро пожаловать, {{ username }}!</h1>
+    {% else %}
+    <h1>Вы не авторизованы</h1>
+    {% endif %}
+</body>
+</html>
